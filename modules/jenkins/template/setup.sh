@@ -69,7 +69,7 @@ instance.save()
 # #     throw new RestartRequiredException(null)
 # # }
 
-# instance.restart()
+instance.restart()
 EOF
 
 chown jenkins.jenkins -R /var/lib/jenkins
@@ -78,19 +78,19 @@ chown jenkins.jenkins -R /var/lib/jenkins
 sudo service jenkins start
 sudo chkconfig jenkins on
 
-waitForPasswordFile
+# waitForPasswordFile
 
-PASS=$(sudo bash -c "cat /var/lib/jenkins/secrets/initialAdminPassword")
+# PASS=$(sudo bash -c "cat /var/lib/jenkins/secrets/initialAdminPassword")
 
-sleep 10
+# sleep 10
 
-waitForJenkins
+# waitForJenkins
 
-# INSTALL CLI
-sudo cp /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar /var/lib/jenkins/jenkins-cli.jar
+# # INSTALL CLI
+# sudo cp /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar /var/lib/jenkins/jenkins-cli.jar
 
-# INSTALL PLUGINS
-sudo java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 -auth ${USERNAME}:${PASSWORD} install-plugin ${plugins}
+# # INSTALL PLUGINS
+# sudo java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 -auth ${USERNAME}:${PASSWORD} install-plugin ${plugins}
 
-# RESTART JENKINS TO ACTIVATE PLUGINS
-sudo java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 -auth ${USERNAME}:${PASSWORD} restart
+# # RESTART JENKINS TO ACTIVATE PLUGINS
+# sudo java -jar /var/lib/jenkins/jenkins-cli.jar -s http://localhost:8080 -auth ${USERNAME}:${PASSWORD} restart
