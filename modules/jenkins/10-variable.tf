@@ -20,6 +20,40 @@ variable "jenkins_version" {
   default = "12"
 }
 
+variable "jenkins_username" {
+  default = "admin"
+}
+
+variable "jenkins_password" {
+  default = "password"
+}
+
+variable "jenkins_plugins" {
+  type = list(string)
+  default = [
+    "ant",
+    "antisamy-markup-formatter",
+    "build-timeout",
+    "cloudbees-folder",
+    "credentials-binding",
+    "email-ext",
+    "git",
+    "github-branch-source",
+    "gradle",
+    "ldap",
+    "mailer",
+    "matrix-auth",
+    "pam-auth",
+    "pipeline-github-lib",
+    "pipeline-stage-view",
+    "ssh-slaves",
+    "subversion",
+    "timestamper",
+    "workflow-aggregator",
+    "ws-cleanup",
+  ]
+}
+
 variable "allow_ip_address" {
   type    = list(string)
   default = []
@@ -42,7 +76,7 @@ variable "volume_type" {
 }
 
 variable "volume_size" {
-  default = "128"
+  default = "64"
 }
 
 variable "key_name" {

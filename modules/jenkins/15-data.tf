@@ -3,7 +3,8 @@
 data "aws_ami" "this" {
   most_recent = true
 
-  owners = ["137112412989"] // AWS's account ID.
+  owners = ["137112412989"] # AWS's account ID.
+  # owners = ["979382823631"] # Bitnami's account ID.
 
   filter {
     name   = "architecture"
@@ -23,6 +24,7 @@ data "aws_ami" "this" {
   filter {
     name   = "name"
     values = ["amzn-ami-hvm-*"]
+    # values = ["bitnami-jenkins-*"]
   }
 }
 
@@ -30,7 +32,8 @@ data "template_file" "setup" {
   template = file("${path.module}/template/setup.sh")
 
   vars = {
-    DNS_NAME = local.domain
-    WORK_DIR = "/mnt/data"
+    plugins  = "${join(" ", var.jenkins_plugins)}"
+    USERNAME = var.jenkins_username
+    PASSWORD = var.jenkins_password
   }
 }
