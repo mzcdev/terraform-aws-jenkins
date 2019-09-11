@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e -x
 
+DNS_NAME="${DNS_NAME}"
+TOKEN="${TOKEN}"
+
 # update
 yum update -y
 
@@ -25,10 +28,10 @@ done
 PASS=$(sudo bash -c "cat /var/lib/jenkins/secrets/initialAdminPassword")
 
 # slack
-if [ "${TOKEN}" != "" ]; then
+if [ "$TOKEN" != "" ]; then
 curl -sL opspresso.com/tools/slack | bash -s -- \
-    --token="${TOKEN}" --username="jenkins" \
+    --token="$TOKEN" --username="jenkins" \
     --footer_icon='https://jenkins.io/sites/default/files/jenkins_favicon.ico' \
-    --footer="<https://${DNS_NAME}|jenkins>" \
+    --footer="<https://$DNS_NAME|jenkins>" \
     --title="Unlock Jenkins" "\`$PASS\`"
 fi
