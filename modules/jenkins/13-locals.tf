@@ -5,3 +5,7 @@ locals {
 
   domain = var.domain != "" ? var.domain : local.default_domain
 }
+
+locals {
+  dns_name = var.base_domain != "" ? aws_route53_record.this.*.name : [aws_alb.this.dns_name]
+}
