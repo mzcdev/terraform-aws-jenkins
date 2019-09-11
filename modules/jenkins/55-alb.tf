@@ -19,6 +19,13 @@ resource "aws_alb_target_group" "this" {
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 
+  health_check {
+    interval            = 10
+    path                = "/login"
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+  }
+
   tags = {
     Name = var.name
   }
@@ -31,12 +38,12 @@ resource "aws_alb_target_group_attachment" "this" {
 }
 
 resource "aws_alb_listener" "http" {
-  load_balancer_arn = aws_alb.this.id
+  load_balancer_arn = aws_alb.this.arn
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
-    target_group_arn = aws_alb_target_group.this.id
+    target_group_arn = aws_alb_target_group.this.arn
     type             = "forward"
   }
 }
@@ -44,13 +51,13 @@ resource "aws_alb_listener" "http" {
 resource "aws_alb_listener" "https" {
   count = var.base_domain != "" ? 1 : 0
 
-  load_balancer_arn = aws_alb.this.id
+  load_balancer_arn = aws_alb.this.arn
   port              = "443"
   protocol          = "HTTPS"
   certificate_arn   = aws_acm_certificate.cert[0].arn
 
   default_action {
-    target_group_arn = aws_alb_target_group.this.id
+    target_group_arn = aws_alb_target_group.this.arn
     type             = "forward"
   }
 }
