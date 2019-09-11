@@ -1,7 +1,8 @@
 # alb
 
 resource "aws_alb" "this" {
-  name    = var.name
+  name = var.name
+
   subnets = var.public_subnet_ids
 
   security_groups = [

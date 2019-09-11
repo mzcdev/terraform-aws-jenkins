@@ -7,5 +7,5 @@ locals {
 }
 
 locals {
-  dns_name = var.base_domain != "" ? aws_route53_record.this.*.name : [aws_alb.this.dns_name]
+  dns_name = var.base_domain != "" ? local.domain : aws_alb.this.dns_name
 }
