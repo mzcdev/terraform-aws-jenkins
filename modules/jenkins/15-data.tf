@@ -32,8 +32,7 @@ data "template_file" "setup" {
   template = file("${path.module}/template/setup.sh")
 
   vars = {
-    plugins  = "${join(" ", var.jenkins_plugins)}"
-    USERNAME = var.jenkins_username
-    PASSWORD = var.jenkins_password
+    DNS_NAME = local.domain
+    TOKEN    = var.slack_token
   }
 }
