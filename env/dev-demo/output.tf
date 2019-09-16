@@ -5,7 +5,7 @@ output "name" {
 }
 
 output "private_ip" {
-  value = module.gitlab.private_ip
+  value = module.jenkins.private_ip
 }
 
 output "dns_name" {
