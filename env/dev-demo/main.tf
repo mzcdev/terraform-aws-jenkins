@@ -14,6 +14,7 @@ provider "aws" {
 }
 
 module "jenkins" {
+  # source = "github.com/nalbam/terraform-aws-jenkins.git//modules/jenkins"
   source = "../../modules/jenkins"
 
   name = var.name
@@ -30,5 +31,8 @@ module "jenkins" {
 
   key_name = var.key_name
 
-  base_domain = var.base_domain
+  dns_name = var.dns_name
+  dns_root = var.dns_root
+
+  slack_token = var.slack_token
 }

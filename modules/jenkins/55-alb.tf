@@ -50,7 +50,7 @@ resource "aws_alb_listener" "http" {
 }
 
 resource "aws_alb_listener" "https" {
-  count = var.base_domain != "" ? 1 : 0
+  count = var.dns_root != "" ? 1 : 0
 
   load_balancer_arn = aws_alb.this.arn
   port              = "443"
