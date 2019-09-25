@@ -3,7 +3,7 @@
 terraform {
   backend "s3" {
     region = "ap-northeast-2"
-    bucket = "terraform-mz-seoul"
+    bucket = "terraform-nalbam-seoul"
     key    = "jenkins.tfstate"
   }
   required_version = ">= 0.12"
@@ -14,8 +14,8 @@ provider "aws" {
 }
 
 module "jenkins" {
-  # source = "github.com/nalbam/terraform-aws-jenkins.git//modules/jenkins"
-  source = "../../modules/jenkins"
+  # source = "github.com/nalbam/terraform-aws-jenkins"
+  source = "../../"
 
   name = var.name
 
