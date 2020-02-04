@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "name" {
-  default = "seoul-dev-demo-jenkins"
+  default = "dev-demo-jenkins"
 }
 
 variable "vpc_id" {
