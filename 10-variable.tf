@@ -20,6 +20,10 @@ variable "jenkins_version" {
   default = "12"
 }
 
+variable "allow_ssh_sg" {
+  default = ""
+}
+
 variable "allow_ip_address" {
   type    = list(string)
   default = []

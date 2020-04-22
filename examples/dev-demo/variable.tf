@@ -28,6 +28,10 @@ variable "jenkins_version" {
   default = "2"
 }
 
+variable "allow_ssh_sg" {
+  default = "sg-01c7ee8427eb8358b"
+}
+
 variable "allow_ip_address" {
   type = list(string)
   default = [
