@@ -1,4 +1,4 @@
-# bastion
+# jenkins
 
 terraform {
   backend "s3" {
