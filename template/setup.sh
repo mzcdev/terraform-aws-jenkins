@@ -29,7 +29,7 @@ PASS=$(sudo bash -c "cat /var/lib/jenkins/secrets/initialAdminPassword")
 
 # slack
 if [ "$TOKEN" != "" ]; then
-curl -sL opspresso.com/tools/slack | bash -s -- \
+curl -sL opspresso.github.io/tools/slack.sh | bash -s -- \
     --token="$TOKEN" --username="jenkins" \
     --footer_icon='https://jenkins.io/sites/default/files/jenkins_favicon.ico' \
     --footer="<https://$DNS_NAME|jenkins>" \
