@@ -16,7 +16,6 @@ provider "aws" {
 }
 
 module "jenkins" {
-  # source = "github.com/nalbam/terraform-aws-jenkins?ref=v0.12.2"
   source = "../../"
 
   name = var.name
